@@ -40,7 +40,7 @@ define sudoers::entry(
 
   file { "${sudoers::params::ss_basedir}/fragment/${name}":
     ensure  => $ensure,
-    content => template('sudoers/sudoers.erb'),
+    content => template('sudoers/entry.erb'),
     notify  => Exec['rebuild-sudoers'],
   }
 }
