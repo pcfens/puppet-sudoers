@@ -27,9 +27,11 @@
 #    nopasswd => 'true',
 #    noexec   => 'true',
 #    commands => ['/bin/cat', '/usr/bin/vim'],
+#    user     => ['phil', 'roger'],
 #  }
-class sudoers {
-  include sudoers::params
+class sudoers (
+  $timeout = 30,
+) inherits sudoers::params {
 
   anchor { 'sudoers::begin': }
   -> class { 'sudoers::package': }
