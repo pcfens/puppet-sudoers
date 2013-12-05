@@ -8,12 +8,16 @@
 #   the superuser, or root). It is an abbreviation for 
 #   "substitute user do"
 #
-#   This module has been built and tested on RHEL systems.
+#   This module has been built and tested on RHEL and Ubuntu systems.
 #
 # Parameters:
-#  This module takes no default parameters. Refer to the Sudoers::Entry 
-#  definiton for usage. 
-#   
+#  $timeout - The default time in minutes that a sudo authentication is 
+#             good for.
+#  $default_group - Automatically add groups that are appropriate for a 
+#                   particular platform (default: true, setting this to false 
+#                   can cause bad things to happen if you don't know what you
+#                   are doing)
+#
 # Actions:
 #   This module will install Sudo packages, and setup the File Fragment
 #   pattern necessary to assemble the Sudo file.
@@ -30,7 +34,8 @@
 #    user     => ['phil', 'roger'],
 #  }
 class sudoers (
-  $timeout = 30,
+  $timeout       = 30,
+  $default_group = true,
 ) inherits sudoers::params {
 
   anchor { 'sudoers::begin': }

@@ -21,4 +21,11 @@ class sudoers::params {
   $ss_basedir = '/tmp/sudoers.d'
   $ss_package = 'sudo'
   $ss_sudoers_file = '/etc/sudoers'
+
+  $std_groups = $::operatingsystem ? {
+    'Ubuntu' => ['sudo', 'admin'],
+    'Debian' => ['sudo', 'wheel'],
+    'RedHat' => ['sudo'],
+    default  => ['sudo', 'admin', 'wheel'],
+  }
 }
