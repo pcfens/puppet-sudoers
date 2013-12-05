@@ -11,6 +11,7 @@
 #  $noexec - If sudo has been compiled with noexec support and the underlying operating system supports it, 
 #            the NOEXEC tag can be used to prevent a dynamically-linked executable from running further commands itself.
 #  $commands - Array of commands a user is allowed to run (default: ALL)
+#  $users - The users that a user is allowed to impersonate (default: ALL)
 #
 # Actions:
 #  - Create entries for Sudoers
@@ -25,6 +26,7 @@
 #    nopasswd => true,
 #    noexec   => true,
 #    commands => ['/bin/cat', '/usr/bin/vim'],
+#    users    => ['phil', 'roger'],
 #  }
 define sudoers::entry(
   $ensure   = present,
@@ -32,6 +34,7 @@ define sudoers::entry(
   $nopasswd = false,
   $noexec   = false,
   $commands = ['ALL'],
+  $users    = ['ALL'],
 ) {
   include sudoers
 
