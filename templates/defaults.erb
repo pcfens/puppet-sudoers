@@ -16,6 +16,6 @@ root    ALL=(ALL) ALL
 
 <% if @default_group -%>
   <%- @std_groups.each do |group| -%>
-%<%= group %> ALL=(ALL) ALL
+%<%= @group %> ALL=(ALL) ALL
   <%- end -%>
 <% end -%> 
